@@ -21,7 +21,7 @@ button:hover{background:#3c4d46}
 .goalbox{position:absolute;left:38.5%;bottom:0;width:23%;height:10%;border:2px solid rgba(255,255,255,.8)}
 .player{position:absolute;width:42px;height:42px;border-radius:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-weight:bold;border:2px solid #fff;z-index:4;user-select:none}
 .def{background:#1769aa}
-.six{background:#e5a400;color:#111}.om{background:#00a6a6;color:#fff}.striker{background:#111;color:#fff}
+.six{background:#e5a400;color:#111}.om{background:#00a6a6;color:#fff}.striker{background:#424242;color:#fff}
 .opp{background:#c62828;cursor:default}
 .ten{background:#7b1fa2}
 .ball{background:#fff;color:#111;width:18px;height:18px;border-color:#222;z-index:5;pointer-events:none}
@@ -143,6 +143,9 @@ function update(){
   const tenY = .48;
   pos(ten,tenX,tenY);
 
+  const zone = ox<.30 ? 'wideLeft' : ox<.45 ? 'halfLeft' :
+               ox>.70 ? 'wideRight' : ox>.55 ? 'halfRight' : 'center';
+
   // Weitere Gegenspieler sinnvoll staffeln:
   // 9 = gegnerischer Stürmer auf letzter Linie,
   // 10 = zwischen den Linien,
@@ -176,8 +179,6 @@ function update(){
 
   const mobile = window.innerWidth <= 700;
   const baseY = mobile ? .76 : .70;
-  const zone = ox<.30 ? 'wideLeft' : ox<.45 ? 'halfLeft' :
-               ox>.70 ? 'wideRight' : ox>.55 ? 'halfRight' : 'center';
 
   let xs=[.20,.35,.50,.65,.80];
   let ys=[baseY+.012,baseY,baseY-.005,baseY,baseY+.012];
@@ -383,11 +384,6 @@ function pointer(e){
 
 
 
-// Fallback-Grundpositionen, damit alle Spieler auch bei einem JS-Fehler sichtbar bleiben.
-pos(opp9,.50,.61);
-pos(opp8,.36,.40);
-pos(opp7,.70,.38);
-pos(st,.50,.31);
 
 window.addEventListener('resize',update);
 update();
