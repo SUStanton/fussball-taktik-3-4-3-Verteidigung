@@ -150,24 +150,24 @@ function update(){
   // 7 = gegnerischer ballferner Flügelspieler.
   let opp9Pos, opp8Pos, opp7Pos;
   if(zone==='wideLeft'){
-    opp9Pos={x:.50,y:.64};
-    opp8Pos={x:.36,y:.46};
+    opp9Pos={x:.50,y:.61};
+    opp8Pos={x:.34,y:.41};
     opp7Pos={x:.74,y:.35};
   } else if(zone==='halfLeft'){
-    opp9Pos={x:.50,y:.64};
-    opp8Pos={x:.40,y:.45};
+    opp9Pos={x:.50,y:.61};
+    opp8Pos={x:.38,y:.40};
     opp7Pos={x:.76,y:.36};
   } else if(zone==='center'){
-    opp9Pos={x:.50,y:.64};
-    opp8Pos={x:.39,y:.42};
+    opp9Pos={x:.50,y:.61};
+    opp8Pos={x:.36,y:.39};
     opp7Pos={x:.69,y:.42};
   } else if(zone==='halfRight'){
-    opp9Pos={x:.50,y:.64};
-    opp8Pos={x:.60,y:.45};
+    opp9Pos={x:.50,y:.61};
+    opp8Pos={x:.62,y:.40};
     opp7Pos={x:.24,y:.36};
   } else {
-    opp9Pos={x:.50,y:.64};
-    opp8Pos={x:.64,y:.46};
+    opp9Pos={x:.50,y:.61};
+    opp8Pos={x:.66,y:.41};
     opp7Pos={x:.26,y:.35};
   }
   pos(opp9,opp9Pos.x,opp9Pos.y);
@@ -381,6 +381,13 @@ function pointer(e){
   update();
 }
 
+
+
+// Fallback-Grundpositionen, damit alle Spieler auch bei einem JS-Fehler sichtbar bleiben.
+pos(opp9,.50,.61);
+pos(opp8,.36,.40);
+pos(opp7,.70,.38);
+pos(st,.50,.31);
 
 window.addEventListener('resize',update);
 update();
